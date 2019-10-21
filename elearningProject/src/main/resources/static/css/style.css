@@ -1,0 +1,251 @@
+body {
+  font-family: "Times New Roman", sans-serif;
+}
+span.a {
+  display: inline-block; /* the default for span */
+
+  height: 50px;
+  font-size: 30px;
+  padding: 5px;
+}
+
+span.b {
+  display: inline-block; /* the default for span */
+
+  height: 50px;
+  font-size: 30px;
+  padding: 5px;
+  margin-left: 500px;
+    margin-bottom: 20px;
+}
+span.c {
+  display: inline-block; /* the default for span */
+
+  height: 50px;
+  font-size: 30px;
+  padding: 5px;
+
+  margin-bottom: 20px;
+}
+
+.header {
+
+  margin-left: 200px;
+
+  border: crimson 0px;
+  padding-top: 10px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 1000px;
+  background-color: #99bbff ;
+  border-radius: 2px;
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .header {width: 400px;
+  margin-left: 10px;
+  }
+}
+
+
+
+#users {
+
+  background:#afc9ff;
+  /*padding-top: 70px;*/
+
+}
+#objectives {
+  height:1100px;
+ margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 100px;
+  background: #99bbff;
+  padding: 10px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2px;
+}
+.sidenav {
+  margin: auto;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 330px;
+  margin-top: 100px;
+  margin-right: 5px;
+  margin-left: 5px;
+  height: 500px;
+  background-color: #afc9ff;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2px;
+
+}
+.column1 {
+  float: left;
+  width: 500px;
+  margin-top: 100px;
+  margin-right: 5px;
+  margin-left: 5px;
+  height: 800px;
+  background-color: #afc9ff;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2px;
+
+}
+.columnLeft {
+  float: left;
+  width: 150px;
+  padding: 10px;
+  height: 300px;
+  margin-top: 100px;
+  margin-right: 5px;
+  margin-left: 200px;
+  background-color: #ADADAD;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.main {
+  margin-left: 140px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+
+  /* make the list items unselectable */
+  /*-webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;*/
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: #ddd;
+}
+
+.collapsible {
+
+  cursor: pointer;
+
+  width: 100%;
+
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+
+/*  border-width: 1px;
+  border-radius: 5px;*/
+}
+.collapsible3 {
+
+  cursor: pointer;
+
+  width: 100%;
+
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+.collapsible2 {
+
+  cursor: pointer;
+  text-align: left;
+  width: 300px;
+
+
+  outline: none;
+  font-size: 15px;
+
+ /* border-width: 1px;
+  border-radius: 5px;*/
+}
+
+.active, .collapsible2:hover {
+  background-color: #555;
+}
+
+.content2 {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  width: 300px;
+}
+.button {
+  background-color: #0080ff;
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+width: 100px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+p{
+  font-size: 20px;
+ text-align: center;
+
+}
+img {
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+.myContent {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  width: 450px;
+}

@@ -1,0 +1,59 @@
+
+CREATE DATABASE elearning;
+
+
+
+CREATE TABLE task (
+										TaskID int identity(1,1) PRIMARY KEY,
+										TaskName varchar(50),
+										TaskSubject varchar(50),
+										Link varchar(50),
+);
+
+
+
+CREATE TABLE "worker" (
+											UserID int identity(1,1) PRIMARY KEY,
+											CreationDate datetime Default(getdate()),
+											CreationTime datetime Default(getdate()),
+											FirstName varchar(50),
+											LastName varchar(50),
+											CardNumber varchar(3),
+											RoomNumber varchar(50),
+											Notes varchar(50),
+											TaskID int FOREIGN KEY REFERENCES task(TaskID),
+
+
+
+);
+
+
+CREATE TABLE "userTask" (
+													UserTaskID int identity(1,1) PRIMARY KEY,
+													UserID int FOREIGN KEY REFERENCES "worker"(UserID),
+													TaskID int FOREIGN KEY REFERENCES "task"(TaskID),
+													CreationDate datetime Default(getdate()),
+													CompletionDate datetime,
+													isCompleted bit ,
+
+);
+
+
+CREATE TABLE workerAccess (
+  												WorkerAccessID int identity (1,1),
+													WorkerID int FOREIGN KEY REFERENCES worker(WorkerID),
+													Username varchar(20),
+													Password varchar(20),
+													Role varchar(10),
+													PRIMARY KEY (WorkerAccessID)
+);
+
+
+
+
+
+CREATE INDEX idx_onid
+ON visitor (OrderNumber, InDate);
+
+
+
