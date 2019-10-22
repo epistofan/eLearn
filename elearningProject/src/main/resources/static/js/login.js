@@ -28,9 +28,11 @@ let loginRequest = new XMLHttpRequest();
                 startTime();
                 document.getElementById("avatar").src = photo;
 
-                uncompletedWorkerTask();
+               uncompletedWorkerTask();
 
                 //getWorkerTask();
+                workerTaskHistory();
+                workerTask();
                 getTasks();
 
             } catch (err) {

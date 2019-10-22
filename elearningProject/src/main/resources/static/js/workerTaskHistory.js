@@ -1,0 +1,36 @@
+function workerTaskHistory() {
+
+    $(document).ready(function() {
+
+        $.ajaxSetup({
+            async: true,
+            headers: {"Authorization": $("#tkn2").text()},
+            dataType: "json"
+
+        });
+
+        $.getJSON("http://10.10.10.100:8888/workerTaskHistory", function (data) {
+
+            let div = $("#history");
+
+div.empty();
+
+                $.each(data, function (index, value) {
+
+
+                   div.append(value.taskId + " " + value.taskName + " " + value.taskSubject);
+                    div.append("<br>");
+
+                });
+
+
+
+
+        });
+
+
+
+});
+
+}
+

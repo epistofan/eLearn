@@ -45,6 +45,10 @@
 
                     </div>
                     <p>Izpilditie uzdevumi:</p>
+                        <div id="history">
+
+
+                        </div>
 
                 </div>
 

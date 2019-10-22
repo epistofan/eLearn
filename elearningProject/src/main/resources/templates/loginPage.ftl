@@ -17,6 +17,8 @@
     <script src="js/getTasks.js"></script>
     <script src="js/sendTask.js"></script>
     <script src="js/newTask.js"></script>
+    <script src="js/workerTask.js"></script>
+    <script src="js/workerTaskHistory.js"></script>
 </head>
 <body>
 

@@ -12,7 +12,8 @@ function setComplete(name) {
     request.onload = function () {
 
         alert("izpildits!");
-        getWorkerTask();
+        workerTask();
+        workerTaskHistory();
 
     }
 

@@ -138,7 +138,7 @@ span.c {
 ul li {
   cursor: pointer;
   position: relative;
-  padding: 12px 8px 12px 40px;
+
   list-style-type: none;
   background: #eee;
   font-size: 18px;
@@ -198,7 +198,6 @@ ul li:hover {
 
   cursor: pointer;
   text-align: left;
-  width: 300px;
 
 
   outline: none;
@@ -214,7 +213,7 @@ ul li:hover {
 
 .content2 {
   padding: 0 18px;
-  display: none;
+  display: block;
   overflow: hidden;
   background-color: #f1f1f1;
   width: 300px;

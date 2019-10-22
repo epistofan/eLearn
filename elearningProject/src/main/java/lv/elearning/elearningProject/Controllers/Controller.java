@@ -131,6 +131,26 @@ public class Controller {
         //tokenManager.parseToken(request.getHeader("Authorization")).getWorkerId();
         return repository.getWorkerTask1(Integer.valueOf(name));
     }
+
+    @GetMapping("/workerTask")
+    public List<WorkerTask1> myWorkerTask(ServletRequest servletRequest){
+
+
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+
+        return repository.getWorkerTask1(tokenManager.parseToken(request.getHeader("Authorization")).getWorkerId());
+    }
+
+
+    @GetMapping("/workerTaskHistory")
+    public List<WorkerTask1> workerTaskHistory(ServletRequest servletRequest){
+
+
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        System.out.println(tokenManager.parseToken(request.getHeader("Authorization")).getWorkerId());
+
+        return repository.workerTaskHistory(tokenManager.parseToken(request.getHeader("Authorization")).getWorkerId());
+    }
     @PostMapping("/sendTask")
     public void sendTask(@RequestBody String name){
 

@@ -1,6 +1,6 @@
 function uncompletedWorkerTask() {
     let data;
-let count;
+
     let i;
     let token = document.getElementById("tkn2").innerText;
 
@@ -22,48 +22,69 @@ let count;
 
         if (request.status >= 200 && request.status < 400) {
 
-                     let users = document.getElementById("users");
 
                      let mapLength = request.getResponseHeader("mapLength");
 
+                     let list = $("<ul>");
 
             for (i = 1; i <parseInt(mapLength)+1; i++) {
 
-               // let div = document.createElement("div");
-
-                //div.setAttribute("class", "content2");
                 try {
-                let div = $("<div></div>").attr("class", "content2");
-                let button = $("<button></button>").attr({class: "collapsible2", id:"data[i][0].workerId", onclick:"getWorkerTask(id)"}).text(data[i][0].workerId +" "+data[i][0].firstName+ " "+data[i][0].lastName);
-
-                //let button = document.createElement("button");
 
 
 
+                let button = $("<li>")
+                    .attr({class: "collapsible2", id:data[i][0].workerId})
+                    .text(data[i][0].workerId +" "+data[i][0].firstName+ " "+data[i][0].lastName)
+                    .append("<div class='content2'>")
+                    .click(function () {
 
 
-    /*button.setAttribute("class", "collapsible2");
-    button.setAttribute("id", data[i][0].workerId);
-    button.setAttribute("onclick", "getWorkerTask(id)");
-    button.appendChild(document.createTextNode(data[i][0].workerId +" "+data[i][0].firstName+ " "+data[i][0].lastName));
-*/
+
+                        let item = $( this );
+                        let div = item.find( "div" );
+                    //div.empty();
+                        $.ajaxSetup({async: true,
+                                            headers: {"user":item.attr("id")},
+                                            dataType: "json"
+
+                                            });
+
+
+                      $.getJSON("http://10.10.10.100:8888/getWorkerTask", function (data) {
+
+                          if ($(div).text().length ==0) {
+
+                              $.each(data, function (index, value) {
+
+
+                                  div.append(value.taskId + " " + value.taskName + "<br>" + value.taskSubject);
+                                  div.append("<br>");
+
+                              });
+
+                          }else{$(div).empty()}
+
+
+                        })
+
+                    });
+
+
 
 
     data[i].forEach(function (item) {
 
 
-$(".content2").text(item.taskId + " " +item.taskName);
-       //div.appendChild(document.createTextNode(item.taskId + " " +item.taskName)) ;
-        //div.appendChild(document.createElement("br"));
-    });
+       // $(".content2").text(item.taskId + " " +item.taskName);
+
+
+                                    });
 
 
 
-
-$("#users").append(button);
-                $("#users").append(div);
-                //document.getElementById("users").appendChild(button);
-                //document.getElementById("users").appendChild(div);
+        $("#users").append(list);
+$(list).append(button);
 
             }catch (error) {
                 console.log("error");
@@ -71,19 +92,7 @@ $("#users").append(button);
 
 
             }
-            let coll = document.getElementsByClassName("collapsible2");
-            let j;
-            for (j = 0; j < coll.length; j++) {
-                coll[j].addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    let content = this.nextElementSibling;
-                    if (content.style.display === "block") {
-                        content.style.display = "none";
-                    } else {
-                        content.style.display = "block";
-                    }
-                });
-            }
+
         }else {
 
             return "no access";

@@ -344,7 +344,7 @@ public class Repository {
                 "FROM task INNER JOIN " +
                 "workerTask ON task.TaskID = workerTask.TaskID INNER JOIN " +
                 "worker ON workerTask.WorkerID = worker.WorkerID " +
-                "WHERE(worker.WorkerID = ? and Task.Deleted = 0)";
+                "WHERE(worker.WorkerID = ? and Task.Deleted = 0 and workerTask.isCompleted = 0)";
 
 
         List<WorkerTask1> workerTaskList1 = new ArrayList<>();
@@ -376,8 +376,76 @@ public class Repository {
 
                     //visitor.setOutTime(resultSet.getTimestamp(6));
                     //user.setOutTimeString(resultSet.getTimestamp(6).toLocalDateTime().toLocalTime().format(dateTimeFormatter1));
-                } catch (NullPointerException npe) {
+                } catch (NumberFormatException e1) {
+e1.printStackTrace();
+                }
+                /*user.setFirstName(resultSet.getString(7));
+                user.setLastName(resultSet.getString(8));
+                user.setCardNumber(resultSet.getString(9));
+                user.setCompany(resultSet.getString(10));
+                user.setResponsiblePerson(resultSet.getString(11));
 
+                user.setRoomName(resultSet.getString(12));
+                user.setResponsiblePersonIdentity(resultSet.getString(13));*/
+                workerTaskList1.add(i, workerTask1);
+                i++;
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return workerTaskList1;
+
+
+    }
+    public List<WorkerTask1> workerTaskHistory(int UserId) {
+        ResultSet resultSet = null;
+
+        PreparedStatement preparedStatement = null;
+        Connection conn = null;
+        DbConnection dbConnection = new DbConnection();
+
+        String sql = "SELECT task.TaskName, task.TaskSubject, task.Link, workerTask.CreationDate, workerTask.CompletionDate, workerTask.isCompleted, task.TaskID " +
+                "FROM task INNER JOIN " +
+                "workerTask ON task.TaskID = workerTask.TaskID INNER JOIN " +
+                "worker ON workerTask.WorkerID = worker.WorkerID " +
+                "WHERE(worker.WorkerID = ? and workerTask.isCompleted = 1 and Task.Deleted = 0)";
+
+
+        List<WorkerTask1> workerTaskList1 = new ArrayList<>();
+
+        try {
+            conn = dbConnection.getDbConnection();
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, UserId);
+
+            resultSet = preparedStatement.executeQuery();
+
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofPattern("HH:mm");
+
+            int i = 0;
+            while (resultSet.next()) {
+
+                WorkerTask1 workerTask1 = new WorkerTask1();
+                workerTask1.setTaskName(resultSet.getString(1));
+                workerTask1.setTaskSubject(resultSet.getString(2));
+                workerTask1.setLink(resultSet.getString(3));
+                workerTask1.setCreationDate(resultSet.getTimestamp(4));
+                workerTask1.setCompletionDate(resultSet.getTimestamp(5));
+                workerTask1.setComplete(resultSet.getBoolean(6));
+                workerTask1.setTaskId(resultSet.getInt(7));
+                try {
+                    //visitor.setOutDate(resultSet.getTimestamp(5));
+                    //user.setOutDateString(resultSet.getTimestamp(5).toLocalDateTime().toLocalDate().format(dateTimeFormatter));
+
+                    //visitor.setOutTime(resultSet.getTimestamp(6));
+                    //user.setOutTimeString(resultSet.getTimestamp(6).toLocalDateTime().toLocalTime().format(dateTimeFormatter1));
+                } catch (NumberFormatException e1) {
+                    e1.printStackTrace();
                 }
                 /*user.setFirstName(resultSet.getString(7));
                 user.setLastName(resultSet.getString(8));
