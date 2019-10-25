@@ -18,9 +18,10 @@ public class DbConnection {
 
         try {
 
-            String dbURL = "jdbc:sqlserver://10.10.10.100;databaseName=elearning";
-            String user = "sa";
-            String pass = "Admin18";
+            String dbURL = "jdbc:mysql://127.0.0.1:3306/elearning";
+            String user = "root";
+            String pass = "Esteban18$";
+            Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(dbURL, user, pass);
             if (conn != null) {
                 DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
@@ -30,6 +31,8 @@ public class DbConnection {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
         return conn;

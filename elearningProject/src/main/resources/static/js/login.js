@@ -2,7 +2,7 @@ function login(username, password){
 
 
 let loginRequest = new XMLHttpRequest();
-    loginRequest.open('POST', 'http://10.10.10.100:8888/login',true);
+    loginRequest.open('POST', 'http://macibas.linkpc.net/login',true);
     loginRequest.setRequestHeader("Content-Type", "application/json");
     loginRequest.setRequestHeader('Authorization', username.value);
 

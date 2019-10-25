@@ -12,8 +12,8 @@ CREATE TABLE task (
 
 
 
-CREATE TABLE "worker" (
-											UserID int identity(1,1) PRIMARY KEY,
+CREATE TABLE worker (
+											WorkerID int identity(1,1) PRIMARY KEY,
 											CreationDate datetime Default(getdate()),
 											CreationTime datetime Default(getdate()),
 											FirstName varchar(50),
@@ -28,10 +28,10 @@ CREATE TABLE "worker" (
 );
 
 
-CREATE TABLE "userTask" (
+CREATE TABLE workerTask (
 													UserTaskID int identity(1,1) PRIMARY KEY,
-													UserID int FOREIGN KEY REFERENCES "worker"(UserID),
-													TaskID int FOREIGN KEY REFERENCES "task"(TaskID),
+													UserID int FOREIGN KEY REFERENCES worker(WorkerID),
+													TaskID int FOREIGN KEY REFERENCES task(TaskID),
 													CreationDate datetime Default(getdate()),
 													CompletionDate datetime,
 													isCompleted bit ,

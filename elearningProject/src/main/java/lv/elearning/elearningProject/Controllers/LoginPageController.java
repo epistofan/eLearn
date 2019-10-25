@@ -40,17 +40,18 @@ public class LoginPageController {
         String authHeader [] = request.getHeader("Authorization").split(", ");
 
         WorkerAccess workerAccess;
+
         workerAccess = repository.getWorkerAccessUser(authHeader[0], authHeader[1]);
 
 
         response.addHeader("photo",repository.getWorker(workerAccess.getWorkerId()).getPhoto());
 
 
-        String url = "http://10.10.10.100:8888";
+        String url = "http://macibas.linkpc.net";
 
         if (workerAccess.getUsername() == null) {
 
-            url = "http://10.10.10.100:8888";
+            url = "http://macibas.linkpc.net";
 
         } else if (workerAccess.getUsername().equals(authHeader[0]) && workerAccess.getPassword().equals(authHeader[1]) && workerAccess.getRole().equals("slave")){
 
