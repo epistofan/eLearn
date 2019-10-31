@@ -9,7 +9,7 @@ function workerTaskHistory() {
 
         });
 
-        $.getJSON("http://10.10.10.100:8888/workerTaskHistory", function (data) {
+        $.getJSON("http://macibas.linkpc.net/workerTaskHistory", function (data) {
 
             let div = $("#history");
 

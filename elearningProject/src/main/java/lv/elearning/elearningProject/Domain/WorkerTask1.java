@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class WorkerTask1 {
 
-
+    private int workerTaskId;
     private String taskName;
     private String taskSubject;
     private String link;
@@ -13,6 +13,15 @@ public class WorkerTask1 {
     private Timestamp completionDate;
     private boolean isComplete;
     private int taskId;
+
+
+    public int getWorkerTaskId() {
+        return workerTaskId;
+    }
+
+    public void setWorkerTaskId(int workerTaskId) {
+        this.workerTaskId = workerTaskId;
+    }
 
     public int getTaskId() {
         return taskId;

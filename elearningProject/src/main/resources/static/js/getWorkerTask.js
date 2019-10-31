@@ -19,7 +19,7 @@ function getWorkerTask(name) {
     let i;
     let data;
     let request = new XMLHttpRequest();
-    request.open('GET', 'http://10.10.10.100:8888/getWorkerTask', true);
+    request.open('GET', 'http://macibas.linkpc.net/getWorkerTask', true);
     request.setRequestHeader("Authorization", token);
     request.setRequestHeader("user", name);
     request.send();
@@ -61,7 +61,9 @@ function getWorkerTask(name) {
                 div.appendChild(document.createElement("br"));
                 div.appendChild(link);
                 div.appendChild(document.createElement("br"));
-                div.appendChild(document.createTextNode("Izveidots: " + new Date(data[i].creationDate)));
+                let currentDateTime = data[i].creationDate;
+                let formattedDate = currentDateTime.getDate() + "-" + (currentDateTime.getMonth() + 1) + "-" + currentDateTime.getFullYear();
+                div.appendChild(document.createTextNode("Izveidots: " + formattedDate));
                 div.appendChild(document.createElement("br"));
                 if (data[i].complete != true) {
 

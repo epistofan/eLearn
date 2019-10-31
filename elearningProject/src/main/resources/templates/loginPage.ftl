@@ -27,8 +27,8 @@
 
     <form class="login" id="loginForm">
         <h1 class="login-title">Sveiki!</h1>
-        <input type="text" class="login-input" placeholder="Lietotājvārds" autofocus name="username" required>
-        <input type="password" class="login-input" placeholder="Parole" name="password" required>
+        <input type="text" class="login-input" placeholder="Lietotājvārds" autofocus name="username" required autocomplete="off">
+        <input type="password" class="login-input" placeholder="Parole" name="password" required autocomplete="off">
 
 
         <button type="button" class="login-button" onclick="login(username, password)">Aiziet!</button>

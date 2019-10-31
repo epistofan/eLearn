@@ -12,7 +12,7 @@ console.log("upload");
     let formData = new FormData();
 
 const request = new XMLHttpRequest();
-    request.open('POST', 'http://10.10.10.100:8888/newTask',true);
+    request.open('POST', 'http://macibas.linkpc.net/newTask',true);
 
     formData.append("obj", obj);
     formData.append("name", descr.value);

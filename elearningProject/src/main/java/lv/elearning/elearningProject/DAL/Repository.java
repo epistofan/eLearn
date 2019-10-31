@@ -121,7 +121,7 @@ public class Repository {
         Connection conn = null;
         DbConnection dbConnection = new DbConnection();
 
-        String sql = "Select * from task where Deleted = '0'";
+        String sql = "Select * from task where Deleted = 0";
 
 
         List<Task> taskList = new ArrayList<>();
@@ -275,6 +275,39 @@ public class Repository {
         }
 
     }
+    public void addWorker(Worker worker) {
+
+        ResultSet resultSet = null;
+        Statement statement = null;
+        PreparedStatement preparedStatement = null;
+        java.sql.Connection conn = null;
+
+        String sql = "insert into worker (FirstName, LastName, CardNumber,RoomNumber, Notes, Photo)" +
+                "values (?, ?, ?,?,?,?)";
+
+
+        try {
+            DbConnection dbConnection = new DbConnection();
+            conn = dbConnection.getDbConnection();
+            preparedStatement = conn.prepareStatement(sql);
+
+
+            preparedStatement.setString(1, worker.getFirstName());
+            preparedStatement.setString(2, worker.getLastName());
+            preparedStatement.setString(3, worker.getCardNumber());
+            preparedStatement.setString(4, worker.getRoomNumber());
+            preparedStatement.setString(5, worker.getNotes());
+            preparedStatement.setString(6, worker.getPhoto());
+
+
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
     public List<uncompletedWorkerTask> uncompletedWorkerTask(){
@@ -288,7 +321,7 @@ public class Repository {
                 "FROM task INNER JOIN " +
                 "workerTask ON task.TaskID = workerTask.TaskID INNER JOIN " +
                 "worker ON workerTask.WorkerID = worker.WorkerID " +
-                "WHERE (workerTask.isCompleted = 0 and Task.Deleted = 0)";
+                "WHERE (workerTask.isCompleted = 0 and task.Deleted = 0)";
 
 
         List<uncompletedWorkerTask> uncompletedWorkerTaskList = new ArrayList<>();
@@ -340,11 +373,11 @@ public class Repository {
         Connection conn = null;
         DbConnection dbConnection = new DbConnection();
 
-        String sql = "SELECT task.TaskName, task.TaskSubject, task.Link, workerTask.CreationDate, workerTask.CompletionDate, workerTask.isCompleted, task.TaskID " +
+        String sql = "SELECT workerTask.WorkerTaskID, task.TaskName, task.TaskSubject, task.Link, workerTask.CreationDate, workerTask.CompletionDate, workerTask.isCompleted, task.TaskID " +
                 "FROM task INNER JOIN " +
                 "workerTask ON task.TaskID = workerTask.TaskID INNER JOIN " +
                 "worker ON workerTask.WorkerID = worker.WorkerID " +
-                "WHERE(worker.WorkerID = ? and Task.Deleted = 0 and workerTask.isCompleted = 0)";
+                "WHERE(worker.WorkerID = ? and task.Deleted = 0 and workerTask.isCompleted = 0)";
 
 
         List<WorkerTask1> workerTaskList1 = new ArrayList<>();
@@ -363,13 +396,14 @@ public class Repository {
             while (resultSet.next()) {
 
                 WorkerTask1 workerTask1 = new WorkerTask1();
-                workerTask1.setTaskName(resultSet.getString(1));
-                workerTask1.setTaskSubject(resultSet.getString(2));
-                workerTask1.setLink(resultSet.getString(3));
-                workerTask1.setCreationDate(resultSet.getTimestamp(4));
-                workerTask1.setCompletionDate(resultSet.getTimestamp(5));
-                workerTask1.setComplete(resultSet.getBoolean(6));
-                workerTask1.setTaskId(resultSet.getInt(7));
+                workerTask1.setWorkerTaskId(resultSet.getInt(1));
+                workerTask1.setTaskName(resultSet.getString(2));
+                workerTask1.setTaskSubject(resultSet.getString(3));
+                workerTask1.setLink(resultSet.getString(4));
+                workerTask1.setCreationDate(resultSet.getTimestamp(5));
+                workerTask1.setCompletionDate(resultSet.getTimestamp(6));
+                workerTask1.setComplete(resultSet.getBoolean(7));
+                workerTask1.setTaskId(resultSet.getInt(8));
                 try {
                     //visitor.setOutDate(resultSet.getTimestamp(5));
                     //user.setOutDateString(resultSet.getTimestamp(5).toLocalDateTime().toLocalDate().format(dateTimeFormatter));
@@ -412,7 +446,7 @@ e1.printStackTrace();
                 "FROM task INNER JOIN " +
                 "workerTask ON task.TaskID = workerTask.TaskID INNER JOIN " +
                 "worker ON workerTask.WorkerID = worker.WorkerID " +
-                "WHERE(worker.WorkerID = ? and workerTask.isCompleted = 1 and Task.Deleted = 0)";
+                "WHERE(worker.WorkerID = ? and workerTask.isCompleted = 1 and task.Deleted = 0)";
 
 
         List<WorkerTask1> workerTaskList1 = new ArrayList<>();
@@ -531,7 +565,7 @@ e1.printStackTrace();
         java.sql.Connection conn = null;
 
 
-        String sql = "UPDATE workerTask SET CompletionDate = GETDATE(), isCompleted = 'true' WHERE WorkerID = ? and TaskID = ?";
+        String sql = "UPDATE workerTask SET CompletionDate = now(), isCompleted = 1 WHERE WorkerID = ? and WorkerTaskID = ?";
 
         try {
             DbConnection dbConnection = new DbConnection();
@@ -606,7 +640,7 @@ e1.printStackTrace();
         java.sql.Connection conn = null;
 
 
-        String sql = "UPDATE Task SET Deleted = 'true' WHERE TaskID = ?";
+        String sql = "UPDATE task SET Deleted = 1 WHERE TaskID = ?";
 
         try {
             DbConnection dbConnection = new DbConnection();

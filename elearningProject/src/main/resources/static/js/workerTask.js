@@ -19,7 +19,7 @@ function workerTask() {
     let i;
     let data;
     let request = new XMLHttpRequest();
-    request.open('GET', 'http://10.10.10.100:8888/workerTask', true);
+    request.open('GET', 'http://macibas.linkpc.net/workerTask', true);
     request.setRequestHeader("Authorization", token);
     request.setRequestHeader("user", name);
     request.send();
@@ -44,7 +44,7 @@ function workerTask() {
                 let button = document.createElement("button");
 
                 let completeButton = document.createElement("button");
-                completeButton.setAttribute("name", data[i].taskId);
+                completeButton.setAttribute("name", data[i].workerTaskId);
                 completeButton.appendChild(document.createTextNode("Izpildit!"));
                 completeButton.setAttribute("onclick", "setComplete(name)");
                 button.setAttribute("class", "collapsible");
@@ -61,7 +61,9 @@ function workerTask() {
                 div.appendChild(document.createElement("br"));
                 div.appendChild(link);
                 div.appendChild(document.createElement("br"));
-                div.appendChild(document.createTextNode("Izveidots: " + new Date(data[i].creationDate)));
+                let currentDateTime = new Date(data[i].creationDate);
+                let formattedDate = currentDateTime.getDate() + "-" + (currentDateTime.getMonth() + 1) + "-" + currentDateTime.getFullYear();
+                div.appendChild(document.createTextNode("Izveidots: " + formattedDate));
                 div.appendChild(document.createElement("br"));
                 if (data[i].complete != true) {
 

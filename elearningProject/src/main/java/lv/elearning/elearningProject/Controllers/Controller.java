@@ -33,7 +33,7 @@ public class Controller {
     @PostMapping("/newTask")
     public String uploadFile(@RequestPart("taskName") String taskName, @RequestPart("name") String name, @RequestPart("obj") MultipartFile multiPartFile, ServletRequest servletRequest){
 
-        File file = new File("c:\\Users\\gera\\Desktop\\elearning\\elearningProject\\src\\main\\resources\\static\\image\\test\\"+multiPartFile.getOriginalFilename());
+        File file = new File("/usr/bin/"+multiPartFile.getOriginalFilename());
 
 
 
@@ -61,7 +61,7 @@ public class Controller {
         Task task = new Task();
         task.setTaskName(taskName);
         task.setTaskSubject(name);
-        task.setLink("\\image\\test\\"+ multiPartFile.getOriginalFilename());
+        task.setLink(multiPartFile.getOriginalFilename());
         repository.addTask(task);
 
 
@@ -201,7 +201,7 @@ public class Controller {
     }
 
 
-    @PutMapping("/tasks")
+    @PutMapping("/task")
     public void deleteTask(@RequestBody String name, ServletRequest servletRequest){
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
@@ -209,6 +209,20 @@ public class Controller {
 
 
         repository.deleteTask(Integer.valueOf(name));
+
+
+
+    }
+    @PutMapping("/worker")
+    public void addWorker(@RequestBody Worker worker, ServletRequest servletRequest){
+
+
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        request.getHeader("Authorization");
+
+
+
+        repository.addWorker(worker);
 
 
 

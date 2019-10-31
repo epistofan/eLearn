@@ -5,7 +5,7 @@ function uncompletedWorkerTask() {
     let token = document.getElementById("tkn2").innerText;
 
     let request = new XMLHttpRequest();
-    request.open('GET', 'http://10.10.10.100:8888/uncompletedWorkerTask', true);
+    request.open('GET', 'http://macibas.linkpc.net/uncompletedWorkerTask', true);
     request.setRequestHeader("Authorization", token);
     request.setRequestHeader("user", name);
     request.send();
@@ -51,7 +51,7 @@ function uncompletedWorkerTask() {
                                             });
 
 
-                      $.getJSON("http://10.10.10.100:8888/getWorkerTask", function (data) {
+                      $.getJSON("http://macibas.linkpc.net/getWorkerTask", function (data) {
 
                           if ($(div).text().length ==0) {
 

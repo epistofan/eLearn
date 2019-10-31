@@ -3,17 +3,17 @@ CREATE DATABASE elearning;
 
 
 
-CREATE TABLE task (TaskID INT AUTO_INCREMENT PRIMARY KEY,TaskName VARCHAR(50),TaskSubject VARCHAR(50),Link VARCHAR(50));
+CREATE TABLE task (TaskID INT AUTO_INCREMENT PRIMARY KEY,TaskName VARCHAR(50),TaskSubject VARCHAR(50),Link VARCHAR(50),CreationTime DATETIME DEFAULT CURRENT_TIMESTAMP, Deleted BOOLEAN DEFAULT 0);
 
 
 
-CREATE TABLE worker (WorkerID INT AUTO_INCREMENT PRIMARY KEY,CreationDate DATETIME DEFAULT CURRENT_TIMESTAMP,CreationTime DATETIME DEFAULT CURRENT_TIMESTAMP,FirstName VARCHAR(50),LastName VARCHAR(50),CardNumber VARCHAR(3),RoomNumber VARCHAR(50),Notes VARCHAR(50),TaskID INT,FOREIGN KEY (TaskID) REFERENCES task(TaskID));
+CREATE TABLE worker (WorkerID INT AUTO_INCREMENT PRIMARY KEY,CreationDate DATETIME DEFAULT CURRENT_TIMESTAMP,CreationTime DATETIME DEFAULT CURRENT_TIMESTAMP,FirstName VARCHAR(50),LastName VARCHAR(50),CardNumber VARCHAR(3),RoomNumber VARCHAR(50),Notes VARCHAR(50),Photo VARCHAR(50));
 
 
 
 
 
-CREATE TABLE workerTask (WorkerTaskID int auto_increment PRIMARY KEY,WorkerID int, FOREIGN KEY (WorkerID) REFERENCES worker(WorkerID),TaskID int, FOREIGN KEY (TaskID) REFERENCES task(TaskID),CreationDate datetime Default CURRENT_TIMESTAMP,CompletionDate datetime,isCompleted bit);
+CREATE TABLE workerTask (WorkerTaskID int auto_increment PRIMARY KEY,WorkerID int, FOREIGN KEY (WorkerID) REFERENCES worker(WorkerID),TaskID int, FOREIGN KEY (TaskID) REFERENCES task(TaskID),CreationDate datetime Default CURRENT_TIMESTAMP,CompletionDate datetime,isCompleted boolean default 0);
 
 
 

@@ -14,7 +14,7 @@ function getTasks() {
     let i;
     let data;
     let request = new XMLHttpRequest();
-    request.open('GET', 'http://10.10.10.100:8888/getTasks', true);
+    request.open('GET', 'http://macibas.linkpc.net/getTasks', true);
     request.setRequestHeader("Authorization", token);
 
 

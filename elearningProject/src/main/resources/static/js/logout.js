@@ -1,11 +1,11 @@
 function logout(){
 
     let logoutRequest = new XMLHttpRequest();
-    logoutRequest.open('GET', 'http://10.10.10.100:8888', true);
+    logoutRequest.open('GET', 'http://macibas.linkpc.net', true);
 
 
 
     logoutRequest.send();
 
-    window.location.href = "http://10.10.10.100:8888";
+    window.location.href = "http://macibas.linkpc.net";
 }

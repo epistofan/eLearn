@@ -7,7 +7,7 @@ function deleteTask(name){
 
 
     let request = new XMLHttpRequest();
-    request.open('PUT', 'http://10.10.10.100:8888/tasks',true);
+    request.open('PUT', 'http://macibas.linkpc.net/task',true);
     request.setRequestHeader("Content-Type", "application/json");
 
 

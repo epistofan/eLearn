@@ -1,90 +1,139 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-
+<html>
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>eLearning App</title>
-
-
-
     <link href="css/style.css" rel="stylesheet">
+    <style>
 
 
-
+    </style>
 </head>
-
 <body>
 
-
 <div class="header">
+
+
+    <span class="c"><button class="button" onclick="getTasks(); uncompletedWorkerTask()">Atjaunot</button></span>
+
     <span class="a" id="date"></span>
 
     <span class="a" id="time"></span>
-    <span class="b" id="btn"><button class = "button" onclick="logout()">Iziet</button> </span>
-    <span class="c"><button class="button" onclick="getTasks(); uncompletedWorkerTask()">Atjaunot</button></span>
-</div>
-<div class="sidenav">
-    <div class="row">
-        <div class="columnLeft" id="leftColumn">
 
-            <img id="avatar" src="" width="130" height="130"  >
+
+    <span class="b" id="btn"><button class = "button" onclick="logout()">Iziet</button> </span>
+</div>
+
+<div class="row">
+
+    <div class="col-3">
+        <div class="aside">
+            <img id="avatar" src=""  >
             <p>${user.firstName}</p>
             <p>${user.lastName}</p>
         </div>
+    </div>
 
 
-        <div class="column1">
+
+    <div class="col-6">
 
 
-            <button onclick="collapse()">Izveidot uzdevumu!</button>
-
-
-            <div id="coll" class="myContent">
-                <br>
-                Uzdevuma nosaukums:
-                <br>
-                <input type="text" id="taskName">
-                <br>
-                Uzdevuma apraksts:<textarea rows="10" cols="50" id="descr"></textarea>
-                <br>
-                Fails:<input type="file" id="file">
-                <br>
-                <br>
-                <button onclick="newTask()">Izveidot!</button>
-
-            </div>
-            <p>Uzdevumi:</p>
-
+        <button onclick="collapse()">Izveidot uzdevumu!</button>
+        <div id="coll" class="myContent">
             <br>
-            <div id="tasks2">
+            Uzdevuma nosaukums:
+            <br>
+            <input type="text" id="taskName">
+            <br>
 
+            Uzdevuma apraksts:
+            <br>
+            <textarea id="descr" rows="10"></textarea>
+            <br>
+            Fails:<input type="file" id="file">
+            <br>
+            <br>
+            <button onclick="newTask()">Izveidot!</button>
 
+        </div>
+        <p>Uzdevumi:</p>
 
-            </div>
-            <p>Mani uzdevumi:</p>
-            <div id="tasks">
+        <br>
+        <div id="tasks2" class="aside">
 
-
-
-            </div>
 
 
         </div>
+        <p>Mani uzdevumi:</p>
+        <div id="tasks" class="aside">
 
-        <div class="column" id="users">
-        <p> Lietotāju tekošie uzdevumi:</p>
+
 
         </div>
-
 
 
     </div>
-    <p hidden id="tkn2"></p>
+
+
+    <div class="col-3">
+        <div class="aside">
+            <div class="column" id="users">
+                <p> Lietotāju tekošie uzdevumi:</p>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-3">
+        <div class="aside">
+            <h1>Izveidot darbinieku</h1>
+        </div>
+    </div>
+
+
+
+    <div class="col-6">
+
+
+
+        <p>Uzdevumu vēsture:</p>
+        <div id="tasks" class="aside">
+
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="col-3">
+        <div class="aside">
+            <div class="column" id="users">
+                <p> Info:</p>
+
+            </div>
+
+
+
+        </div>
+    </div>
 </div>
 
 
-</body>
+<p hidden id="tkn2"></p>
 
+<div class="footer">
+    @2019
+
+
+</div>
+
+</body>
 </html>
