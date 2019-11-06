@@ -19,6 +19,8 @@
     <script src="js/newTask.js"></script>
     <script src="js/workerTask.js"></script>
     <script src="js/workerTaskHistory.js"></script>
+    <script src="js/newWorker.js"></script>
+    <script src="js/getPhoto.js"></script>
 </head>
 <body>
 

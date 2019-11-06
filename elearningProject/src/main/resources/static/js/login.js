@@ -16,8 +16,7 @@ let loginRequest = new XMLHttpRequest();
             try {
 
                 let tkn = loginRequest.getResponseHeader("Authorization");
-                let photo = loginRequest.getResponseHeader("photo");
-                //document.body.appendChild(loginRequest.responseXML);
+
 
                 document.getElementsByTagName('html')[0].innerHTML = "";
                 document.getElementsByTagName("html")[0].innerHTML = loginRequest.response;
@@ -26,11 +25,12 @@ let loginRequest = new XMLHttpRequest();
 
 
                 startTime();
-                document.getElementById("avatar").src = photo;
 
-               uncompletedWorkerTask();
+                getPhoto();
 
-                //getWorkerTask();
+
+               workers();
+
                 workerTaskHistory();
                 workerTask();
                 getTasks();

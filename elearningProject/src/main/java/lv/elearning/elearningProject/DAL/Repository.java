@@ -44,24 +44,6 @@ public class Repository {
                 worker.setFirstName(resultSet.getString(4));
                 worker.setLastName(resultSet.getString(5));
 
-
-                try {
-                    //visitor.setOutDate(resultSet.getTimestamp(5));
-                    //worker.setOutDateString(resultSet.getTimestamp(5).toLocalDateTime().toLocalDate().format(dateTimeFormatter));
-
-                    //visitor.setOutTime(resultSet.getTimestamp(6));
-                    //worker.setOutTimeString(resultSet.getTimestamp(6).toLocalDateTime().toLocalTime().format(dateTimeFormatter1));
-                } catch (NullPointerException npe) {
-
-                }
-                /*worker.setFirstName(resultSet.getString(7));
-                worker.setLastName(resultSet.getString(8));
-                worker.setCardNumber(resultSet.getString(9));
-                worker.setCompany(resultSet.getString(10));
-                worker.setResponsiblePerson(resultSet.getString(11));
-
-                worker.setRoomName(resultSet.getString(12));
-                worker.setResponsiblePersonIdentity(resultSet.getString(13));*/
                 workerList.add(i, worker);
                 i++;
             }
@@ -275,7 +257,7 @@ public class Repository {
         }
 
     }
-    public void addWorker(Worker worker) {
+    public void addWorker(Worker worker, WorkerAccess workerAccess) {
 
         ResultSet resultSet = null;
         Statement statement = null;
@@ -289,8 +271,8 @@ public class Repository {
         try {
             DbConnection dbConnection = new DbConnection();
             conn = dbConnection.getDbConnection();
-            preparedStatement = conn.prepareStatement(sql);
-
+            preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            conn.setAutoCommit(false);
 
             preparedStatement.setString(1, worker.getFirstName());
             preparedStatement.setString(2, worker.getLastName());
@@ -301,6 +283,26 @@ public class Repository {
 
 
             preparedStatement.executeUpdate();
+            resultSet = preparedStatement.getGeneratedKeys();
+
+            if (resultSet != null && resultSet.next()) {
+
+                int id = resultSet.getInt(1);
+
+                String sql2 = "insert into workerAccess (WorkerID, Username, Password, Role) values(?,?,?,?)";
+                preparedStatement = conn.prepareStatement(sql2);
+
+                preparedStatement.setInt(1, id);
+                preparedStatement.setString(2, workerAccess.getUsername());
+                preparedStatement.setString(3, workerAccess.getPassword());
+                preparedStatement.setString(4, "slave");
+
+                preparedStatement.executeUpdate();
+                conn.commit();
+            }else {
+
+                conn.rollback();
+            }
 
 
         } catch (SQLException e) {

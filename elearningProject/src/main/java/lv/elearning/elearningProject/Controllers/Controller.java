@@ -4,21 +4,28 @@ package lv.elearning.elearningProject.Controllers;
 import lv.elearning.elearningProject.DAL.Repository;
 import lv.elearning.elearningProject.Domain.*;
 import lv.elearning.elearningProject.TokenManager;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.support.ServletContextResource;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static org.apache.commons.io.IOUtils.toByteArray;
 
 
 @RestController
@@ -70,7 +77,7 @@ public class Controller {
     }
 
 
-    @GetMapping("/getWorkers")
+    @GetMapping("/workers")
     public List<Worker> getWorkers(){
 
 
@@ -213,18 +220,68 @@ public class Controller {
 
 
     }
-    @PutMapping("/worker")
-    public void addWorker(@RequestBody Worker worker, ServletRequest servletRequest){
+    @PostMapping("/worker")
+    public void addWorker(@RequestPart("photo") MultipartFile multiPartFile, @RequestPart("worker") Worker worker, @RequestPart("workerAccess") WorkerAccess workerAccess, ServletRequest servletRequest){
 
+
+        File file = new File("/usr/bin/"+multiPartFile.getOriginalFilename());
+
+        try {
+            multiPartFile.transferTo(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("new worker");
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        request.getHeader("Authorization");
+
+
+        worker.setPhoto(multiPartFile.getOriginalFilename());
+       repository.addWorker(worker, workerAccess);
 
 
 
-        repository.addWorker(worker);
+    }
+    @GetMapping("/image2")
+    public String downloadPDFResource( HttpServletRequest request,
+                                     HttpServletResponse response){
 
 
+        String fileName = "don.jpg";
 
+
+        String dataDirectory = "/usr/bin/";
+        Path file = Paths.get(dataDirectory, fileName);
+        if (Files.exists(file)){
+
+            response.setContentType("image/jpg");
+            response.addHeader("Content-Disposition", "attachment; filename="+fileName);
+            try
+            {
+                Files.copy(file, response.getOutputStream());
+                response.getOutputStream().flush();
+            }
+            catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return "image";
+    }
+
+    @GetMapping(value = "/image", produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<byte[]> getImageAsResponseEntity(ServletRequest servletRequest) throws IOException {
+
+        String avatar;
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        Worker worker = repository.getWorker(tokenManager.parseToken(request.getHeader("Authorization")).getWorkerId());
+                avatar = worker.getPhoto();
+        HttpHeaders headers = new HttpHeaders();
+        InputStream in = new FileInputStream("/usr/bin/"+avatar);
+        byte[] media = IOUtils.toByteArray(in);
+        headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+
+        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+        return responseEntity;
     }
 }

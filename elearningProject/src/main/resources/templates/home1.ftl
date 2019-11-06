@@ -23,7 +23,7 @@
 
     <span class="a" id="time"></span>
     <span class="b" id="btn"><button class = "button" onclick="logout()">Iziet</button> </span>
-    <span class="c"><button class="button" onclick="getTasks(); uncompletedWorkerTask()">Atjaunot</button></span>
+    <span class="c"><button class="button" onclick="getTasks(); workers()">Atjaunot</button></span>
 </div>
 <div class="sidenav">
     <div class="row">

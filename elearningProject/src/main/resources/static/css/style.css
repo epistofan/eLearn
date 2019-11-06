@@ -110,12 +110,18 @@ p{
 
 
 }
+.myContent2 {
 
+  display: none;
+
+
+
+}
 * {box-sizing: border-box;}
 
 
 
- @media screen and (max-width: 768px){
+ @media screen and (max-width: 1000px){
   body{
 
   margin-right: 5px;
@@ -125,10 +131,10 @@ p{
 }
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 1000px){
   body {
-    margin-right: 200px;
-    margin-left: 200px;
+    width:1000px;
+    margin:auto;
     font-family: sans-serif;
     background-color: #ececec;
   }
@@ -155,9 +161,11 @@ p{
     height: auto;
   }
 }
-#avatar {
-  width: 100%;
-  height: auto;
+@media screen and (min-width: 768px) {
+  #avatar {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .menu ul {

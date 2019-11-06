@@ -13,7 +13,7 @@
 <div class="header">
 
 
-    <span class="c"><button class="button" onclick="getTasks(); uncompletedWorkerTask()">Atjaunot</button></span>
+    <span class="c"><button class="button" onclick="getTasks(); workers()">Atjaunot</button></span>
 
     <span class="a" id="date"></span>
 
@@ -28,8 +28,8 @@
     <div class="col-3">
         <div class="aside">
             <img id="avatar" src=""  >
-            <p>${user.firstName}</p>
-            <p>${user.lastName}</p>
+            <p>${user.firstName} ${user.lastName}</p>
+
         </div>
     </div>
 
@@ -78,7 +78,7 @@
     <div class="col-3">
         <div class="aside">
             <div class="column" id="users">
-                <p> Lietotāju tekošie uzdevumi:</p>
+                <p> Lietotāji(darbinieki):</p>
 
             </div>
 
@@ -93,6 +93,32 @@
     <div class="col-3">
         <div class="aside">
             <h1>Izveidot darbinieku</h1>
+            <button onclick="collapse2()">Izveidot darbinieku!</button>
+            <div id="addWorker" class="myContent2">
+                <br>
+                Vārds:
+                <br>
+                <input type="text" id="firstName">
+                <br>
+                Uzvārds:
+                <br>
+                <input type="text" id="lastName">
+                <br>
+                Lietotājvārds:
+                <br>
+                <input type="text" id="username">
+                <br>
+                Parole:
+
+                <br>
+                <input type="password" id="password">
+                <br>
+                Bilde:<input type="file" id="photo">
+                <br>
+                <br>
+                <button onclick="newWorker()">Izveidot!</button>
+
+            </div>
         </div>
     </div>
 
@@ -130,7 +156,7 @@
 <p hidden id="tkn2"></p>
 
 <div class="footer">
-    @2019
+    2019
 
 
 </div>

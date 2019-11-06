@@ -7,16 +7,24 @@ import lv.elearning.elearningProject.Domain.AccessToken;
 import lv.elearning.elearningProject.Domain.WorkerAccess;
 import lv.elearning.elearningProject.TokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.misc.IOUtils;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
+
+import static org.apache.commons.io.IOUtils.toByteArray;
+import static sun.misc.IOUtils.*;
 
 @Controller
 public class LoginPageController {
@@ -59,9 +67,7 @@ public class LoginPageController {
 
             AccessToken accessToken = new AccessToken();
 
-            //tokenManager.generateToken(workerAccess);
 
-            //accessToken.setToken(tokenManager.generateToken((WorkerAccess) request.getAttribute("user")));
             accessToken.setToken(tokenManager.generateToken(workerAccess));
             response.setHeader("Authorization", accessToken.getToken());
             response.addHeader("user", repository.getWorker(workerAccess.getWorkerId()).getFirstName());
@@ -74,9 +80,6 @@ public class LoginPageController {
         }else if(workerAccess.getPassword().equals(authHeader[1]) && workerAccess.getRole().equals("master") ){
             AccessToken accessToken = new AccessToken();
 
-            //tokenManager.generateToken(workerAccess);
-
-            //accessToken.setToken(tokenManager.generateToken((WorkerAccess) request.getAttribute("user")));
             accessToken.setToken(tokenManager.generateToken(workerAccess));
             response.setHeader("Authorization", accessToken.getToken());
             response.addHeader("user", repository.getWorker(workerAccess.getWorkerId()).getFirstName());
@@ -87,6 +90,5 @@ public class LoginPageController {
 
         return url;
     }
-
 
 }

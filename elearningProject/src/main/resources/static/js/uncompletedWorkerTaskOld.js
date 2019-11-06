@@ -1,11 +1,11 @@
-function uncompletedWorkerTask() {
+function uncompletedWorkerTask1() {
     let data;
 
     let i;
     let token = document.getElementById("tkn2").innerText;
 
     let request = new XMLHttpRequest();
-    request.open('GET', 'http://macibas.linkpc.net/uncompletedWorkerTask', true);
+    request.open('GET', 'http://macibas.linkpc.net/workers', true);
     request.setRequestHeader("Authorization", token);
     request.setRequestHeader("user", name);
     request.send();
@@ -43,17 +43,8 @@ function uncompletedWorkerTask() {
 
                         let item = $( this );
                         let div = item.find( "div" );
-                    //div.empty();
-                        $.ajaxSetup({async: true,
-                                            headers: {"user":item.attr("id")},
-                                            dataType: "json"
-
-                                            });
 
 
-                      $.getJSON("http://macibas.linkpc.net/getWorkerTask", function (data) {
-
-                          if ($(div).text().length ==0) {
 
                               $.each(data, function (index, value) {
 
@@ -63,23 +54,11 @@ function uncompletedWorkerTask() {
 
                               });
 
-                          }else{$(div).empty()}
 
 
-                        })
 
                     });
 
-
-
-
-    data[i].forEach(function (item) {
-
-
-       // $(".content2").text(item.taskId + " " +item.taskName);
-
-
-                                    });
 
 
 

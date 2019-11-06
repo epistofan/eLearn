@@ -1,68 +1,116 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-
+<html>
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>eLearning App</title>
-
-
-
     <link href="css/style.css" rel="stylesheet">
+    <style>
 
 
-
+    </style>
 </head>
-
 <body>
 
-
 <div class="header">
+
+
+    <span class="c"><button class="button" onclick="getTasks(); workers()">Atjaunot</button></span>
+
     <span class="a" id="date"></span>
 
     <span class="a" id="time"></span>
+
+
     <span class="b" id="btn"><button class = "button" onclick="logout()">Iziet</button> </span>
-    <span class="c"><button class="button" onclick="getWorkerTask()">Atjaunot</button></span>
 </div>
-<div class="sidenav">
+
 <div class="row">
-                <div class="columnLeft" id="leftColumn">
 
-                    <img id="avatar" src="" width="130" height="130"  >
-                    <p>${user.firstName}</p>
-                    <p>${user.lastName}</p>
-                </div>
-
-
-                <div class="column1">
-                     <p>Tekošie uzdevumi:</p>
-
-                    <br>
-                    <div id="tasks">
+    <div class="col-3">
+        <div class="aside">
+            <img id="avatar" src=""  >
+            <p>${user.firstName}</p>
+            <p>${user.lastName}</p>
+        </div>
+    </div>
 
 
 
-                    </div>
-                    <p>Izpilditie uzdevumi:</p>
-                        <div id="history">
+    <div class="col-6">
 
 
-                        </div>
-
-                </div>
-
-                 <div class="column">
 
 
-                 </div>
+        <p>Mani uzdevumi:</p>
+        <div id="tasks" class="aside">
+
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="col-3">
+        <div class="aside">
+            <div class="column" id="users">
+                <p> dfvdfvdfvdf:</p>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-3">
+        <div class="aside">
+            <h1>dfvdfvdfv</h1>
+
+        </div>
+    </div>
+
+
+
+    <div class="col-6">
+
+
+
+        <p>Uzdevumu vēsture:</p>
+        <div id="tasks" class="aside">
+
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="col-3">
+        <div class="aside">
+            <div class="column" id="users">
+                <p> Info:</p>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<p hidden id="tkn2"></p>
+
+<div class="footer">
+    @2019
 
 
 </div>
-    <p hidden id="tkn2"></p>
-</div>
-
 
 </body>
-
 </html>
