@@ -13,7 +13,7 @@
     <script src="js/setComplete.js"></script>
     <script src="js/logout.js"></script>
     <script src="js/getUsers.js"></script>
-    <script src="js/uncompletedWorkerTask.js"></script>
+    <script src="js/workers.js"></script>
     <script src="js/getTasks.js"></script>
     <script src="js/sendTask.js"></script>
     <script src="js/newTask.js"></script>

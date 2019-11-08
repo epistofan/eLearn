@@ -80,7 +80,7 @@
 
 
         <p>Uzdevumu vēsture:</p>
-        <div id="tasks" class="aside">
+        <div id="history" class="aside">
 
 
 
@@ -92,7 +92,7 @@
 
     <div class="col-3">
         <div class="aside">
-            <div class="column" id="users">
+            <div class="column" id="message">
                 <p> Info:</p>
 
             </div>

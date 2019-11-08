@@ -33,7 +33,6 @@ async function workers() {
                     div.append("<br>");
 
                 });
-
             });
 
         $("#users").append(list);

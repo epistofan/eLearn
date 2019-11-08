@@ -1,41 +1,56 @@
 function newTask(){
 
 
-   let taskName =  document.getElementById("taskName");
-   let descr = document.getElementById("descr");
-    let file = document.getElementById("file");
+    let taskName = $("#taskName").val();
+    let taskSubject = $("#descr").val();
 
-const obj = file.files[0];
+    let file = $("#file")[0].files[0];
 
-console.log("upload");
-    console.log(taskName.value);
+    let task  = {
+        taskName,
+        taskSubject
+
+    };
+
+    let data =  JSON.stringify(task);
+
+
+
     let formData = new FormData();
-
-const request = new XMLHttpRequest();
-    request.open('POST', 'http://macibas.linkpc.net/newTask',true);
-
-    formData.append("obj", obj);
-    formData.append("name", descr.value);
-    formData.append("taskName", taskName.value);
-
-    request.send(formData);
-
-    console.log("upload 2");
-    request.onload = function () {
-
-    if (request.status >= 200 && request.status < 400) {
-
-        alert("Uzdevums ir izveidots");
-    }
+    formData.append("obj", file);
+    formData.append("task", data);
 
 
-        document.getElementById("taskName").value = "";
-        document.getElementById("descr").value = "";
-        document.getElementById("file").value = "";
-
-        document.getElementById("coll").style.display ="none";
 
 
-        getTasks();
-};
+    $.ajaxSetup({async: true,
+        headers: {},
+
+
+    });
+
+
+    $.ajax({url: "http://macibas.linkpc.net/newTask", data: formData, cache: false, processData: false,
+        contentType: false, method: "POST", success: function (response) {
+        console.log(response);
+            if (response === "success") {
+
+                alert("Uzdevums ir izveidots");
+                $("#coll").hide();
+                $("#taskName").empty();
+                $("#descr").empty();
+                $("#file").empty();
+            } else {
+                alert("neizdevas");
+            }
+
+
+
+
+
+        }
+    });
+
+
+
 }

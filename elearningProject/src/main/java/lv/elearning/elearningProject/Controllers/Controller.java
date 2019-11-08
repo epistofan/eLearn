@@ -38,7 +38,7 @@ public class Controller {
 
 
     @PostMapping("/newTask")
-    public String uploadFile(@RequestPart("taskName") String taskName, @RequestPart("name") String name, @RequestPart("obj") MultipartFile multiPartFile, ServletRequest servletRequest){
+    public String uploadFile(@RequestPart("task") Task task, @RequestPart("obj") MultipartFile multiPartFile, ServletRequest servletRequest){
 
         File file = new File("/usr/bin/"+multiPartFile.getOriginalFilename());
 
@@ -47,17 +47,10 @@ public class Controller {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         try {
 
-           // Part filePart =  request.getPart("obj");
+
             multiPartFile.transferTo(file);
 
 
-           // InputStream fileInputStream = filePart.getInputStream();
-
-
-            //Path file = Files.createFile(Paths.get().fileInputStream);
-
-            //Files.copy(fileInputStream, )
-            //FileOutputStream fileOutputStream = new FileOutputStream("C:\\test.txt");
 
 
         }catch (Exception e) {
@@ -65,15 +58,10 @@ public class Controller {
         }
         System.out.println("upload");
 
-        Task task = new Task();
-        task.setTaskName(taskName);
-        task.setTaskSubject(name);
         task.setLink(multiPartFile.getOriginalFilename());
         repository.addTask(task);
 
-
-
-        return "home";
+        return "success";
     }
 
 
