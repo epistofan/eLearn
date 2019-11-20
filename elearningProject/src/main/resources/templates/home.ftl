@@ -15,13 +15,14 @@
 <div class="sidenav">
 
 
-    <div id="date"></div>
+    <div class="dateTime" id="date"></div>
 
-    <div id="time"></div>
+    <div class="dateTime" id="time"></div>
 
 
-
+<div>
     <img id="avatar" src=""  >
+</div>
     <p>${user.firstName} ${user.lastName}</p>
     <button class = "button" onclick="logout()">Iziet</button>
 </div>
@@ -38,7 +39,7 @@
 
         <div class="header">
 
-            <button onclick="collapse()">Izveidot uzdevumu!</button>
+            <button class="button" onclick="collapse()">Izveidot uzdevumu!</button>
             <div id="coll" class="myContent">
                 <br>
                 Uzdevuma nosaukums:
@@ -60,7 +61,7 @@
         <br>
         <div class="header">
 
-            <button onclick="collapse2()">Izveidot darbinieku!</button>
+            <button class="button" onclick="collapse2()">Izveidot darbinieku!</button>
             <div id="addWorker" class="myContent2">
                 <br>
                 Vārds:
@@ -71,9 +72,16 @@
                 <br>
                 <input type="text" id="lastName">
                 <br>
-                Bilde:
+                Lietotājvārds:
                 <br>
-                <input type="file" id="photo">
+                <input type="text" id="username">
+                <br>
+                Parole:
+
+                <br>
+                <input type="password" id="password">
+                <br>
+                Bilde:<input type="file" id="photo">
                 <br>
                 <br>
                 <button onclick="newWorker()">Izveidot!</button>
@@ -82,7 +90,7 @@
         </div>
         <p>Uzdevumi:</p>
 
-        <br>
+
         <div id="tasks2" class="aside">
 
 
@@ -102,7 +110,7 @@
     <div class="col-3">
         <div class="aside">
             <div class="column" id="users">
-                <p> Lietotaju tekosie uzdevumi:</p>
+                <p> Lietotaju info:</p>
 
             </div>
 
@@ -111,7 +119,7 @@
         </div>
     </div>
 </div>
-<hr>
+
 <div class="row">
 
 

@@ -38,7 +38,7 @@ public class Controller {
 
 
     @PostMapping("/newTask")
-    public String uploadFile(@RequestPart("task") Task task, @RequestPart("obj") MultipartFile multiPartFile, ServletRequest servletRequest){
+    public ResponseEntity uploadFile(@RequestPart("task") Task task, @RequestPart("obj") MultipartFile multiPartFile, ServletRequest servletRequest){
 
         File file = new File("/usr/bin/"+multiPartFile.getOriginalFilename());
 
@@ -61,7 +61,7 @@ public class Controller {
         task.setLink(multiPartFile.getOriginalFilename());
         repository.addTask(task);
 
-        return "success";
+        return new ResponseEntity<>("success", HttpStatus.OK);
     }
 
 
@@ -232,7 +232,7 @@ public class Controller {
 
     }
     @GetMapping("/image2")
-    public String downloadPDFResource( HttpServletRequest request,
+    public String downloadTask( HttpServletRequest request,
                                      HttpServletResponse response){
 
 
@@ -268,6 +268,26 @@ public class Controller {
         InputStream in = new FileInputStream("/usr/bin/"+avatar);
         byte[] media = IOUtils.toByteArray(in);
         headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+
+        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+        return responseEntity;
+    }
+
+    @GetMapping(value = "/task", produces = MediaType.ALL_VALUE)
+    public ResponseEntity<byte[]> getTask(ServletRequest servletRequest, ServletResponse servletResponse) throws IOException {
+
+        String taskLink;
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+        Task task = repository.getTask(Integer.valueOf(request.getHeader("taskId")));
+        taskLink = task.getLink();
+        HttpHeaders headers = new HttpHeaders();
+        InputStream in = new FileInputStream("/usr/bin/"+taskLink);
+        byte[] media = IOUtils.toByteArray(in);
+        headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+
+        response.addHeader("fileExtension", taskLink);
 
         ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
         return responseEntity;

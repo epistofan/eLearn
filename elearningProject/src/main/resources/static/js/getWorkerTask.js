@@ -44,9 +44,15 @@ function getWorkerTask(name) {
                 let button = document.createElement("button");
 
                 let completeButton = document.createElement("button");
+                let linkButton = document.createElement("button");
                 completeButton.setAttribute("name", data[i].taskId);
                 completeButton.appendChild(document.createTextNode("Izpildit!"));
                 completeButton.setAttribute("onclick", "setComplete(name)");
+
+                linkButton.setAttribute("name", data[i].taskId);
+                linkButton.appendChild(document.createTextNode("Ieladet!"));
+                linkButton.setAttribute("onclick", "downloadTask(name)");
+
                 button.setAttribute("class", "collapsible");
                 let link = document.createElement("a");
                 link.appendChild(document.createTextNode("link"));
@@ -68,6 +74,8 @@ function getWorkerTask(name) {
                 if (data[i].complete != true) {
 
                 div.appendChild(completeButton);
+                div.appendChild(linkButton);
+
             }else{
                     div.appendChild(document.createTextNode("Izpildits: " + new Date(data[i].completionDate)));
                 }

@@ -10,34 +10,32 @@
 </head>
 <body>
 
-<div class="header">
 
 
-    <span class="c"><button class="button" onclick="getTasks(); workers()">Atjaunot</button></span>
-
-    <span class="a" id="date"></span>
-
-    <span class="a" id="time"></span>
+<div class="sidenav">
 
 
-    <span class="b" id="btn"><button class = "button" onclick="logout()">Iziet</button> </span>
+    <div class="dateTime" id="date"></div>
+
+    <div class="dateTime" id="time"></div>
+
+
+    <div>
+        <img id="avatar" src=""  >
+    </div>
+    <p>${user.firstName} ${user.lastName}</p>
+    <button class = "button" onclick="logout()">Iziet</button>
 </div>
+
+
 
 <div class="row">
 
-    <div class="col-3">
-        <div class="aside">
-            <img id="avatar" src=""  >
-            <p>${user.firstName}</p>
-            <p>${user.lastName}</p>
-        </div>
-    </div>
 
 
 
-    <div class="col-6">
 
-
+    <div class="col-9">
 
 
         <p>Mani uzdevumi:</p>
@@ -53,10 +51,7 @@
 
     <div class="col-3">
         <div class="aside">
-            <div class="column" id="users">
-                <p> dfvdfvdfvdf:</p>
 
-            </div>
 
 
 
@@ -66,20 +61,15 @@
 
 <div class="row">
 
-    <div class="col-3">
-        <div class="aside">
-            <h1>dfvdfvdfv</h1>
-
-        </div>
-    </div>
 
 
 
-    <div class="col-6">
+
+    <div class="col-9">
 
 
 
-        <p>Uzdevumu vēsture:</p>
+        <p>Uzdevumu vesture:</p>
         <div id="history" class="aside">
 
 
@@ -92,10 +82,7 @@
 
     <div class="col-3">
         <div class="aside">
-            <div class="column" id="message">
-                <p> Info:</p>
 
-            </div>
 
 
 
@@ -106,11 +93,8 @@
 
 <p hidden id="tkn2"></p>
 
-<div class="footer">
-    @2019
 
-
-</div>
 
 </body>
+
 </html>

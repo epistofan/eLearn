@@ -83,19 +83,10 @@ ul li:hover {
   background-color: #f1f1f1;
 
 }
-/*.button {
-  background-color: #0080ff;
-  border: none;
-  color: white;
-  padding: 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-width: 100px;
-  cursor: pointer;
-  border-radius: 5px;
-}*/
+.button {
+    margin: auto;
+    display: block;
+}
 p{
   font-size: 20px;
  text-align: center;
@@ -126,7 +117,7 @@ p{
 
   margin-right: 5px;
   margin-left: 5px;
-  font-family: sans-serif;
+
   background-color: #c1d2dc;
 }
 }
@@ -135,16 +126,16 @@ p{
   body {
     width:1000px;
     margin:auto;
-    font-family: sans-serif;
+
     background-color: #ececec;
   }
 }
 
 .header {
-  background-color: #e0e4ff;
+  background-color: white;
   color: black;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 .footer {
@@ -159,6 +150,8 @@ p{
   #avatar {
     width: 50%;
     height: auto;
+      display: block;
+      margin: auto;
   }
 }
 @media screen and (min-width: 768px) {
@@ -172,6 +165,7 @@ p{
   list-style-type: none;
   margin: 0;
   padding: 0;
+    width: fit-content;
 }
 
 .menu li {
@@ -190,10 +184,11 @@ p{
   background-color: white;
   padding: 5px;
   color: gray;
-  text-align: center;
+
   font-size: 14px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   border-radius: 3px;
+    text-align: left;
 }
 
 .row::after {
@@ -206,7 +201,7 @@ p{
   float: left;
   width: 100%;
   padding: 10px;
-  padding-left: 200px;
+  padding-left: 180px;
 
 }
 [class*="col-3"] {
@@ -235,7 +230,7 @@ p{
 #descr{
 
   width: 100%;
-  heigth: auto;
+
 
 }
 span.b{
@@ -282,4 +277,8 @@ span.a{
 
 .sidenav a:hover {
   color: #f1f1f1;
+}
+.dateTime{
+
+    text-align: center;
 }

@@ -158,6 +158,47 @@ public class Repository {
         return taskList;
     }
 
+    public Task getTask(int taskId) {
+        ResultSet resultSet = null;
+
+        PreparedStatement preparedStatement = null;
+        Connection conn = null;
+        DbConnection dbConnection = new DbConnection();
+
+        String sql = "Select * from task where TaskID = ?";
+        Task task = new Task();
+
+
+        try {
+            conn = dbConnection.getDbConnection();
+            preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setInt(1, taskId);
+            resultSet = preparedStatement.executeQuery();
+
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofPattern("HH:mm");
+
+
+            while (resultSet.next()) {
+
+
+                task.setTaskId(resultSet.getInt(1));
+                task.setTaskName(resultSet.getString(2));
+                task.setTaskSubject(resultSet.getString(3));
+                task.setLink(resultSet.getString(4));
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return task;
+    }
+
 
     public List<Worker> getWorkerTasks() {
         ResultSet resultSet = null;

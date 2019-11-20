@@ -20,19 +20,6 @@ async function workers() {
             .click(function () {
 
 
-
-                let item = $( this );
-                let div = item.find( "div" );
-
-
-
-                $.each(data, function (index, value) {
-
-
-                    div.append(value.taskId + " " + value.taskName + "<br>" + value.taskSubject);
-                    div.append("<br>");
-
-                });
             });
 
         $("#users").append(list);

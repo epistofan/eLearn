@@ -31,9 +31,9 @@ function newTask(){
 
 
     $.ajax({url: "http://macibas.linkpc.net/newTask", data: formData, cache: false, processData: false,
-        contentType: false, method: "POST", success: function (response) {
-        console.log(response);
-            if (response === "success") {
+        contentType: false, method: "POST", success: function (status) {
+        console.log(status);
+            if (status === "success") {
 
                 alert("Uzdevums ir izveidots");
                 $("#coll").hide();

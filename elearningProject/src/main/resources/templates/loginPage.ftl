@@ -21,6 +21,8 @@
     <script src="js/workerTaskHistory.js"></script>
     <script src="js/newWorker.js"></script>
     <script src="js/getPhoto.js"></script>
+    <script src="js/downloadTask.js"></script>
+    <script src="js/download.js"></script>
 </head>
 <body>
 
