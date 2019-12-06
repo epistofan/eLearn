@@ -21,7 +21,7 @@ function workerTask() {
     let request = new XMLHttpRequest();
     request.open('GET', 'http://macibas.linkpc.net/workerTask', true);
     request.setRequestHeader("Authorization", token);
-    request.setRequestHeader("user", name);
+
     request.send();
 
 
@@ -53,10 +53,7 @@ function workerTask() {
                 completeButton.appendChild(document.createTextNode("Izpildit!"));
                 completeButton.setAttribute("onclick", "setComplete(name)");
                 button.setAttribute("class", "collapsible");
-                let link = document.createElement("a");
-                link.appendChild(document.createTextNode("link"));
-                link.download = "uzdevums";
-                link.href = data[i].link;
+                div.appendChild(document.createElement("br"));
 
                 button.appendChild(document.createTextNode(data[i].taskName));
 
@@ -64,7 +61,7 @@ function workerTask() {
                 div.appendChild(document.createElement("br"));
 
                 div.appendChild(document.createElement("br"));
-                div.appendChild(link);
+
                 div.appendChild(document.createElement("br"));
                 let currentDateTime = new Date(data[i].creationDate);
                 let formattedDate = currentDateTime.getDate() + "-" + (currentDateTime.getMonth() + 1) + "-" + currentDateTime.getFullYear();

@@ -15,8 +15,8 @@ let sendTaskRequest = new XMLHttpRequest();
 
     sendTaskRequest.send(name);
 
-
-
-
+sendTaskRequest.onload = function() {
+    workerTask();
+}
 
 }

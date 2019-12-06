@@ -2,13 +2,7 @@ function getTasks() {
 
     let token = document.getElementById("tkn2").innerText;
 
-    let list = document.getElementById("tasks2");
-
-    let child = list.lastElementChild;
-    while (child) {
-        list.removeChild(child);
-        child = list.lastElementChild;
-    }
+    $("#tasks2").empty();
 
 
     let i;
@@ -34,11 +28,24 @@ function getTasks() {
             data.reverse();
             for (i = 0; i < data.length; i++) {
                 let div = document.createElement("div");
+                div.setAttribute("id", "task");
                 div.setAttribute("class", "content");
-            let button = document.createElement("button");
-            button.setAttribute("class", "collapsible3");
+
+let button = $("<div>").attr("class", "collapsible3").text(data[i].taskName).click(function () {
 
 
+
+   let elem =  $(this).find("#task");
+
+    if(elem.is(":visible")){
+
+        elem.hide();
+    }else {
+
+        elem.show();
+    }
+
+});
 
             let setTaskButton = document.createElement("button");
             setTaskButton.appendChild(document.createTextNode("Nosutit"));
@@ -46,7 +53,7 @@ function getTasks() {
                 let eraseTaskButton = document.createElement("button");
                 eraseTaskButton.appendChild(document.createTextNode("Dzēst"));
 
-            button.appendChild(document.createTextNode(data[i].taskName));
+            //button.appendChild(document.createTextNode(data[i].taskName));
             setTaskButton.setAttribute("onclick", "sendTask(name)");
             setTaskButton.setAttribute("id", "setTaskButton");
             setTaskButton.setAttribute("name", data[i].taskId);
@@ -56,41 +63,28 @@ function getTasks() {
                 eraseTaskButton.setAttribute("name", data[i].taskId);
 
             div.appendChild(document.createTextNode(data[i].taskSubject));
-                div.appendChild(document.createElement("br"));
 
 
-                let link = document.createElement("a");
-                link.appendChild(document.createTextNode("link"));
-                link.download = "uzdevums";
-                link.href = data[i].link ;
                 div.appendChild(document.createElement("br"));
-                div.appendChild(link);
-                div.appendChild(document.createElement("br"));
+                let linkButton = document.createElement("button");
+                linkButton.setAttribute("name", data[i].taskId);
+                linkButton.appendChild(document.createTextNode("Ieladet!"));
+                linkButton.setAttribute("onclick", "downloadTask(name)");
+
                 div.appendChild(setTaskButton);
                 div.appendChild(eraseTaskButton);
+                div.appendChild(linkButton);
 
 
-                document.getElementById("tasks2").appendChild(button);
+                button.append(div);
+$("#tasks2").append(button).append("<br>");
 
 
-                document.getElementById("tasks2").appendChild(div);
 
 
             }
 
-            let coll = document.getElementsByClassName("collapsible3");
-            let j;
-            for (j = 0; j < coll.length; j++) {
-                coll[j].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    let content = this.nextElementSibling;
-                    if (content.style.display === "block") {
-                        content.style.display = "none";
-                    } else {
-                        content.style.display = "block";
-                    }
-                });
-            }
+
         }else {
             return "no access";
         }

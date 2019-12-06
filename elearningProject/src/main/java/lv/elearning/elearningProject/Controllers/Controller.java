@@ -37,8 +37,8 @@ public class Controller {
     TokenManager tokenManager;
 
 
-    @PostMapping("/newTask")
-    public ResponseEntity uploadFile(@RequestPart("task") Task task, @RequestPart("obj") MultipartFile multiPartFile, ServletRequest servletRequest){
+    @PutMapping("/newTask")
+    public String uploadFile(@RequestPart("task") Task task, @RequestPart("obj") MultipartFile multiPartFile, ServletRequest servletRequest){
 
         File file = new File("/usr/bin/"+multiPartFile.getOriginalFilename());
 
@@ -61,7 +61,7 @@ public class Controller {
         task.setLink(multiPartFile.getOriginalFilename());
         repository.addTask(task);
 
-        return new ResponseEntity<>("success", HttpStatus.OK);
+        return "success";
     }
 
 

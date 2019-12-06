@@ -42,7 +42,7 @@ ul li:hover {
 .collapsible3 {
 
   cursor: pointer;
-
+  background-color: #e0e4ff;
   width: 100%;
 
   text-align: left;
@@ -78,7 +78,7 @@ ul li:hover {
 
 .content2 {
   padding: 0 18px;
-  display: block;
+  display: none;
   overflow: hidden;
   background-color: #f1f1f1;
 
@@ -102,6 +102,14 @@ p{
 
 }
 .myContent2 {
+
+  display: none;
+
+
+
+}
+
+.myContent3 {
 
   display: none;
 

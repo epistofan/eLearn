@@ -18,7 +18,7 @@ public class DbConnection {
 
         try {
 
-            String dbURL = "jdbc:mysql://127.0.0.1:3306/elearning?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=EET";
+            String dbURL = "jdbc:mysql://127.0.0.1:3306/elearning?useUnicode=yes&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=EET";
             String user = "root";
             String pass = "Esteban18$";
             Class.forName("com.mysql.jdbc.Driver");

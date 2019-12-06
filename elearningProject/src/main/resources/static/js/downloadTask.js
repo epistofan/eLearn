@@ -13,7 +13,7 @@ async function  downloadTask(name){
                 let blob = await response.blob();
 let fileExtension = await response.headers.get("fileExtension");
 
-                download(blob, "uzdevums"+fileExtension);
+                download(blob, "uzdevums_"+fileExtension);
                 //$( "#avatar" ).attr("src", URL.createObjectURL(blob) );
 
 

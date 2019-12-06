@@ -128,6 +128,7 @@ public class Repository {
                 task.setLink(resultSet.getString(4));
 
 
+
                 try {
                     //visitor.setOutDate(resultSet.getTimestamp(5));
                     //user.setOutDateString(resultSet.getTimestamp(5).toLocalDateTime().toLocalDate().format(dateTimeFormatter));
@@ -489,7 +490,7 @@ e1.printStackTrace();
                 "FROM task INNER JOIN " +
                 "workerTask ON task.TaskID = workerTask.TaskID INNER JOIN " +
                 "worker ON workerTask.WorkerID = worker.WorkerID " +
-                "WHERE(worker.WorkerID = ? and workerTask.isCompleted = 1 and task.Deleted = 0)";
+                "WHERE(worker.WorkerID = ? and workerTask.isCompleted = 1)";
 
 
         List<WorkerTask1> workerTaskList1 = new ArrayList<>();

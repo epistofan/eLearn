@@ -1,4 +1,4 @@
-function newWorker() {
+async function newWorker() {
 
 
     let firstName = $("#firstName").val();
@@ -28,19 +28,31 @@ function newWorker() {
 
 
 
-                        $.ajaxSetup({async: true,
-                                            headers: {},
+    try {
+        const response = await fetch("http://macibas.linkpc.net/worker", {
+            method: "POST",
+            body: formData
+        });
+        const result = await response;
+        console.log('Успех:', result);
+
+        alert("Darbinieks ir izveidots");
+
+        $("#firstName").val("");
+        $("#lastName").val("");
+        $("#username").val("");
+        $("#password").val("");
+        $("#photo").val("");
+        $("#addWorker").hide();
 
 
-                                            });
+    } catch (error) {
+        alert("neizdevas");
+        console.error('Ошибка:', error);
+    }
 
 
-                      $.ajax({url: "http://macibas.linkpc.net/worker", data: formData, cache: false, processData: false,
-                          contentType: false, method: "POST", success: function () {}
-
-
-                    });
-
+workers();
 
 }
 

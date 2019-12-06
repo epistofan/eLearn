@@ -23,3 +23,17 @@ function collapse2() {
         element.style.display = "none";
     }
 }
+
+function collapse3() {
+
+    $(".collapsible3" ).click(function () {
+
+        $(this).find("div").show();
+    })
+
+/*if(
+     $(div).is(":visible")
+){$("#task").hide()
+
+}else {$("#task").show()}*/
+}

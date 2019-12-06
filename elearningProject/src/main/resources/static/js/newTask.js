@@ -1,4 +1,4 @@
-function newTask(){
+async function newTask(){
 
 
     let taskName = $("#taskName").val();
@@ -23,7 +23,28 @@ function newTask(){
 
 
 
-    $.ajaxSetup({async: true,
+    try {
+        const response = await fetch("http://macibas.linkpc.net/newTask", {
+            method: "PUT",
+            body: formData
+        });
+        const result = await response;
+        console.log('Успех:', result);
+
+        alert("Uzdevums ir izveidots");
+
+        $("#taskName").val("");
+        $("#descr").val("");
+        $("#file").val("");
+        $("#coll").hide();
+        workerTask();
+getTasks();
+    } catch (error) {
+        alert("neizdevas");
+        console.error('Ошибка:', error);
+    }
+
+/*    $.ajaxSetup({async: true,
         headers: {},
 
 
@@ -49,7 +70,7 @@ function newTask(){
 
 
         }
-    });
+    });*/
 
 
 
