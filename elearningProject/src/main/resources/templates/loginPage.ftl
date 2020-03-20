@@ -23,22 +23,33 @@
     <script src="js/getPhoto.js"></script>
     <script src="js/downloadTask.js"></script>
     <script src="js/download.js"></script>
+    <script src="js/getPic.js"></script>
 </head>
-<body>
+<body onload="getPic()">
 
 <script src="js/login.js"></script>
 
 
     <form class="login" id="loginForm">
-        <h1 class="login-title">Sveiki!</h1>
+
         <input type="text" class="login-input" placeholder="Lietotājvārds" autofocus name="username" required autocomplete="off">
         <input type="password" class="login-input" placeholder="Parole" name="password" required autocomplete="off">
 
 
         <button type="button" class="login-button" onclick="login(username, password)">Aiziet!</button>
 
-        <p class="login-lost"><a href="">sazināties</a></p>
     </form>
+
+<div id="bkg">
+
+
+    <img src="" alt="" class="img">
+    <p id="title"></p>
+
+    <p id="descr"></p>
+    <p id="copyright">&copy;</p>
+
+</div>
 
 
 </body>
