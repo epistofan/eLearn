@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/style.css?version=2" rel="stylesheet">
+    <link href="css/style.css?version=1" rel="stylesheet">
     <style>
 
 
@@ -12,46 +12,52 @@
 
 
 
+<div class="sidenav">
+
+
+    <div class="dateTime" id="date"></div>
+
+    <div class="dateTime" id="time"></div>
+
+
+<div>
+    <img id="avatar" src=""  >
+</div>
+    <p>${user.firstName} ${user.lastName}</p>
+    <button class = "button" onclick="logout()">Iziet</button>
+</div>
+
+
 
 <div class="row">
 
-    <div class="column1">
-
-        <div class="dateTime" id="date"></div>
-
-        <div class="dateTime" id="time"></div>
 
 
-        <div>
-            <img id="avatar" src=""  >
+
+
+    <div class="col-9">
+
+        <div class="header">
+
+            <button class="button" onclick="collapse()">Izveidot uzdevumu!</button>
+            <div id="coll" class="myContent">
+                <br>
+                Uzdevuma nosaukums:
+                <br>
+                <input type="text" id="taskName">
+                <br>
+
+                Uzdevuma apraksts:
+                <br>
+                <textarea id="descr" rows="10"></textarea>
+                <br>
+                Fails:<input type="file" id="file">
+                <br>
+                <br>
+                <button onclick="newTask()">Izveidot!</button>
+
+            </div>
         </div>
-        <p>${user.firstName} ${user.lastName}</p>
-        <button class = "button" onclick="logout()">Iziet</button>
-
-    </div>
-
-
-    <div class="column">
-
-        <button class="button" onclick="collapse()">Izveidot uzdevumu!</button>
-        <div id="coll" class="myContent">
-            <br>
-            Uzdevuma nosaukums:
-            <br>
-            <input type="text" id="taskName">
-            <br>
-
-            Uzdevuma apraksts:
-            <br>
-            <textarea id="descr" rows="10"></textarea>
-            <br>
-            Fails:<input type="file" id="file">
-            <br>
-            <br>
-            <button onclick="newTask()">Izveidot!</button>
-
-        </div>
-
         <br>
         <div class="header">
 
@@ -88,14 +94,11 @@
         <div id="tasks2" class="aside">
 
 
+
         </div>
         <p>Mani uzdevumi:</p>
         <div id="tasks" class="aside">
 
-
-        </div>
-        <p>Uzdevumu vesture:</p>
-        <div id="history" class="aside">
 
 
         </div>
@@ -104,9 +107,9 @@
     </div>
 
 
-    <div class="column3">
+    <div class="col-3">
         <div class="aside">
-            <div class="" id="users">
+            <div class="column" id="users">
                 <p> Lietotaju info:</p>
 
             </div>
@@ -114,10 +117,33 @@
 
 
         </div>
+    </div>
+</div>
+
+<div class="row">
 
 
+
+
+
+    <div class="col-9">
+
+
+
+        <p>Uzdevumu vesture:</p>
+        <div id="history" class="aside">
+
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="col-3">
         <div class="aside">
-            <div class="" id="users">
+            <div class="column" id="users">
                 <p> Info:</p>
 
             </div>

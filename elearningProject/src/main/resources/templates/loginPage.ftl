@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/loginStyle.css" rel="stylesheet">
+    <link href="css/loginStyle.css?version=2" rel="stylesheet">
 
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 

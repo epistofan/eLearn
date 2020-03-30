@@ -5,12 +5,13 @@ body {
 
 .login {
   margin: auto;
-
-  padding: 30px 25px;
-
+  padding: 5px;
   text-align: center;
-
   border-radius: 5px;
+  position: sticky;
+  top: 0;
+  background-color: darkslategray;
+  width: 90%;
 }
 
 h1.login-title {
@@ -66,12 +67,33 @@ h1.login-title {
 
 .img
 {
+  display: block;
   margin: auto;
-  width: 100%;
+  width: 50%;
 
 }
+@media screen and (max-width: 768px) {
+.img {
+  display: block;
+  margin: auto;
+  width: 90%;
+}
+.login-button{
+  width: 200px;
+
+
+
+}
+
+}
+
+
+
 p
 {
- color: gray;
+  color: gray;
   text-align: justify;
+  width: 90%;
+  margin: auto;
+  padding: 5px;
 }

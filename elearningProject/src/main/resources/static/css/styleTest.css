@@ -1,8 +1,4 @@
-ul{
 
-  padding: 1px;
-
-}
 
 ul li {
   cursor: pointer;
@@ -22,7 +18,7 @@ ul li {
 
 /* Set all odd list items to a different color (zebra-stripes) */
 ul li:nth-child(odd) {
-  background: #e0e4ff;
+  background: #f9f9f9;
 }
 
 /* Darker background-color on hover */
@@ -40,8 +36,8 @@ ul li:hover {
   outline: none;
   font-size: 15px;
 
-  /*  border-width: 1px;
-    border-radius: 5px;*/
+/*  border-width: 1px;
+  border-radius: 5px;*/
 }
 .collapsible3 {
 
@@ -72,8 +68,8 @@ ul li:hover {
   outline: none;
   font-size: 15px;
 
-  /* border-width: 1px;
-   border-radius: 5px;*/
+ /* border-width: 1px;
+  border-radius: 5px;*/
 }
 
 .active, .collapsible2:hover {
@@ -88,12 +84,12 @@ ul li:hover {
 
 }
 .button {
-  margin: auto;
-  display: block;
+    margin: auto;
+    display: block;
 }
 p{
   font-size: 20px;
-  text-align: center;
+ text-align: center;
 
 }
 
@@ -124,14 +120,14 @@ p{
 
 
 
-@media screen and (max-width: 1000px){
+ @media screen and (max-width: 1000px){
   body{
 
-    margin-right: 5px;
-    margin-left: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
 
-    background-color: #c1d2dc;
-  }
+  background-color: #c1d2dc;
+}
 }
 
 @media screen and (min-width: 1000px){
@@ -143,14 +139,27 @@ p{
   }
 }
 
-
+.header {
+  background-color: white;
+  color: black;
+  padding: 15px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.footer {
+  background-color: #e0e4ff;
+  color: black;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
 
 @media screen and (max-width: 768px) {
   #avatar {
     width: 50%;
     height: auto;
-    display: block;
-    margin: auto;
+      display: block;
+      margin: auto;
   }
 }
 @media screen and (min-width: 768px) {
@@ -164,7 +173,7 @@ p{
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: fit-content;
+    width: fit-content;
 }
 
 .menu li {
@@ -178,49 +187,43 @@ p{
 .menu li:hover {
   background-color: #F38D24;
 }
-history{
-  padding: 15px;
 
+.aside {
+  background-color: white;
+  padding: 5px;
+  color: gray;
 
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border-radius: 3px;
+    text-align: left;
 }
-
 
 .row::after {
   content: '';
   clear: both;
   display: table;
 }
-.aside{
 
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  border-radius: 3px;
+[class*="col-9"] {
+  float: left;
+  width: 100%;
+  padding: 10px;
+  padding-left: 180px;
+
 }
+[class*="col-3"] {
+  float: left;
+  width: 100%;
+  padding: 10px;
 
+
+}
 /* Create three equal columns that floats next to each other */
 .column {
   float: left;
-  width: 60%;
-
+  width: 33.33%;
   padding: 15px;
-  color: gray;
-  font-size: 14px;
-
-
-  text-align: left;
-  margin-top:10px;
-}
-.column3 {
-  float: left;
-  width: 20%;
-  background-color: white;
-  padding: 15px;
-  color: gray;
-  font-size: 14px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  border-radius: 3px;
-  text-align: left;
-  margin-top:10px;
 }
 
 /* Clear floats after the columns */
@@ -235,10 +238,6 @@ history{
   .column {
     width: 100%;
   }
-  .column3 {
-    width: 100%;
-  }
-
 }
 
 #descr{
@@ -253,38 +252,46 @@ span.b{
 span.a{
 
 }
-
-
 @media screen and (min-width: 768px) {
-  .column1 {
-    height: 95vh;
-    top:0;
-    position: -webkit-sticky;
-    position: sticky;
+  .sidenav {
+    height: 95%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
 
-    font-size: 20px;
     margin-top:10px;
-    background-color: #c8e4ff;
-
-    border-radius: 3px;
+    background-color: #e0e4ff;
+    overflow-x: hidden;
+    padding-top: 20px;
+    border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-
-    float: left;
-    width: 20%;
-    padding: 15px;
   }
 }
 @media screen and (max-width: 768px) {
+  .sidenav {
+
+  }
+  [class*="col-9"] {
+    float: left;
+    width: 100%;
+    padding: 10px;
 
 
+  }
 }
 
-
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
 
 .sidenav a:hover {
   color: #f1f1f1;
 }
 .dateTime{
 
-  text-align: center;
+    text-align: center;
 }
