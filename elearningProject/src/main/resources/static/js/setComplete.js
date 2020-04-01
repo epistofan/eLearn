@@ -1,4 +1,4 @@
-function setComplete(name) {
+function setComplete(id) {
 
     let token = document.getElementById("tkn2").innerText;
 
@@ -6,7 +6,7 @@ function setComplete(name) {
     request.open('POST', 'http://macibas.linkpc.net/setComplete', true);
     request.setRequestHeader("Content-Type", "application/json");
     request.setRequestHeader("Authorization", token);
-    request.send(name);
+    request.send(id);
 
 
     request.onload = function () {

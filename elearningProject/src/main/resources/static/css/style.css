@@ -44,14 +44,15 @@ ul li:hover {
     border-radius: 5px;*/
 }
 .collapsible3 {
-
   cursor: pointer;
   background-color: #e0e4ff;
   width: 100%;
-
   text-align: left;
   outline: none;
   font-size: 15px;
+  padding: 15px 0px;
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 .active, .collapsible:hover {
   background-color: #555;
@@ -66,14 +67,14 @@ ul li:hover {
 .collapsible2 {
 
   cursor: pointer;
+  background-color: #e0e4ff;
+  width: 100%;
   text-align: left;
-
-
   outline: none;
   font-size: 15px;
+  padding: 15px 0px;
 
-  /* border-width: 1px;
-   border-radius: 5px;*/
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .active, .collapsible2:hover {
@@ -90,6 +91,14 @@ ul li:hover {
 .button {
   margin: auto;
   display: block;
+  border-radius: 3px;
+  width: 100%;
+  cursor: pointer;
+  background-color: #a5a5a5;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
 }
 p{
   font-size: 20px;
@@ -101,15 +110,17 @@ p{
 .myContent {
 
   display: none;
-
-
+  background-color: cornsilk;
+  padding: inherit;
+  border-radius: 3px;
 
 }
 .myContent2 {
 
   display: none;
-
-
+  background-color: cornsilk;
+  padding: inherit;
+  border-radius: 3px;
 
 }
 
@@ -178,7 +189,7 @@ p{
 .menu li:hover {
   background-color: #F38D24;
 }
-history{
+#history{
   padding: 15px;
 
 

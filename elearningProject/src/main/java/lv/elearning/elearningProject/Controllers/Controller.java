@@ -47,11 +47,7 @@ public class Controller {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         try {
 
-
             multiPartFile.transferTo(file);
-
-
-
 
         }catch (Exception e) {
 
@@ -220,13 +216,32 @@ public class Controller {
             e.printStackTrace();
         }
 
-        System.out.println("new worker");
-
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-
 
         worker.setPhoto(multiPartFile.getOriginalFilename());
        repository.addWorker(worker, workerAccess);
+
+
+
+    }
+    @PutMapping("/worker")
+    public void updateWorker(@RequestPart("photo") MultipartFile multiPartFile, ServletRequest servletRequest){
+
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        request.getHeader("Authorization");
+
+        int workerId = tokenManager.parseToken(request.getHeader("Authorization")).getWorkerId();
+
+
+        File file = new File("/usr/bin/"+multiPartFile.getOriginalFilename());
+
+        try {
+            multiPartFile.transferTo(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        repository.updateWorker(workerId, multiPartFile.getOriginalFilename());
 
 
 

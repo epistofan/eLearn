@@ -353,7 +353,35 @@ public class Repository {
 
     }
 
+    public void updateWorker(int workerId, String photo) {
 
+        ResultSet resultSet = null;
+        Statement statement = null;
+        PreparedStatement preparedStatement = null;
+        java.sql.Connection conn = null;
+
+        String sql = "update worker set Photo = ? where workerId = ?";
+
+
+
+        try {
+            DbConnection dbConnection = new DbConnection();
+            conn = dbConnection.getDbConnection();
+            preparedStatement = conn.prepareStatement(sql);
+
+
+            preparedStatement.setString(1, photo);
+            preparedStatement.setInt(2, workerId);
+
+
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
     public List<uncompletedWorkerTask> uncompletedWorkerTask(){
         ResultSet resultSet = null;
 

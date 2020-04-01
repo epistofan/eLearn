@@ -24,6 +24,7 @@
     <script src="js/downloadTask.js"></script>
     <script src="js/download.js"></script>
     <script src="js/getPic.js"></script>
+    <script src="js/changeAvatar.js"></script>
 </head>
 <body onload="getPic()">
 
@@ -43,7 +44,7 @@
 <div id="bkg">
 
 
-    <img src="" alt="" class="img">
+    <img id="titlePic" src="" alt="" class="img">
     <p id="title"></p>
 
     <p id="descr"></p>

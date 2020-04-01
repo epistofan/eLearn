@@ -32,6 +32,7 @@
 
 
     <div class="column">
+        <div class="aside" id="avatarTools"></div>
 
         <button class="button" onclick="collapse()">Izveidot uzdevumu!</button>
         <div id="coll" class="myContent">
@@ -106,8 +107,9 @@
 
     <div class="column3">
         <div class="aside">
+            <p> Lietotāju info:</p>
             <div class="" id="users">
-                <p> Lietotaju info:</p>
+
 
             </div>
 
@@ -117,7 +119,7 @@
 
 
         <div class="aside">
-            <div class="" id="users">
+            <div class="" id="userInfo">
                 <p> Info:</p>
 
             </div>

@@ -1,11 +1,11 @@
-async function  downloadTask(name){
+async function  downloadTask(id){
 
 
                 let response = await fetch("http://macibas.linkpc.net/task", {
                     headers:
                         {
                             "Authorization": $("#tkn2").text(),
-                            "taskId": name
+                            "taskId": id
                         }
 
                 });

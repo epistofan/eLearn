@@ -18,6 +18,7 @@ async function workerTask() {
             .click(async function () {
 
                 let elem =  $(this).find(".content2");
+                let id = $(this).attr("id");
 
 
                 if(elem.is(":visible")){
@@ -25,8 +26,16 @@ async function workerTask() {
                     elem.hide();
                 }else {
 
-                let button = $("<button>").text("Izpildīt!").attr("onclick", "setComplete(name)");
-                let button2 = $("<button>").text("Ieladet!").attr("onclick", "downloadTask(name)");
+                let button = $("<button>").text("Izpildīt!").click(async function() {
+
+                setComplete(value.workerTaskId);
+
+                });
+                let button2 = $("<button>").text("Ieladet!").click(async function() {
+
+                    downloadTask(value.taskId);
+
+                });
 
 
                     let currentDateTime = new Date(value.creationDate);
