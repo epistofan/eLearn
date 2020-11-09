@@ -20,7 +20,7 @@ public class DbConnection {
 
             String dbURL = "jdbc:mysql://127.0.0.1:3306/elearning?useUnicode=yes&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=EET";
             String user = "root";
-            String pass = "Esteban18$";
+            String pass = "";
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(dbURL, user, pass);
             if (conn != null) {
